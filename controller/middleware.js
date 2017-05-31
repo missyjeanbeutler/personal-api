@@ -12,5 +12,16 @@ module.exports = {
     });
 
     next();
-  }
+  },
+  generateId: function(req, res, next){
+         req.body.id = skillz.length + 1;
+         next();
+    },
+
+    verifyUser: function(req, res, next){
+        if(req.params.username == 'missy' && req.params.id == 555) {
+           return next()
+        }
+        res.status(403).json('Error!')
+    }
 }
